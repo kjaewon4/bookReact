@@ -5,24 +5,6 @@ import { FiEye, FiEyeOff } from "react-icons/fi";
 import "./main.css";
 import Nav from "./Nav";
 
-/**
- * JWT 방식 써서 API 요청 보낼 때마다 헤더에 Authorization: Bearer <JWT> 추가해야됨
- const token = localStorage.getItem("token");
-
-axios.get("http://localhost:8080/secure-data", {
-    headers: {
-        Authorization: `Bearer ${token}`  // JWT 토큰을 헤더에 포함
-    }
-})
-.then(response => {
-    console.log("응답:", response.data);
-})
-.catch(error => {
-    console.error("인증 실패:", error);
-});
- * 
- */
-
 const Login = () => {
   const [userUuid, setUserUuid] = useState("");
   const [userPassword, setUserPassword] = useState("");
@@ -41,51 +23,47 @@ const Login = () => {
     }
   }, [location]);
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!userUuid || !userPassword) {
-      setErrorMessage("아이디와 비밀번호를 입력하세요.")
-    } else {
-      try {
-        const response = await axios.post("http://localhost:8080/login",
-          new URLSearchParams({
-            userUuid: userUuid,
-            userPassword: userPassword,
-          }),
-          {
-            headers: {
-              "Content-Type" : "application/json"
-              // "Content-Type": "application/x-www-form-urlencoded",  // 폼 로그인 방식 시 형식
-            },
-            withCredentials: true,  // 세션 쿠키를 포함해서 요청 -> 서버가 쿠키에 세션 ID를 저장하고, 이후 요청에서 이 세션 ID를 사용해서 로그인 상태임을 확인 가능
-          }
-        )
-        .then(response => {
-          console.log("로그인 성공: ", response.data);
-          localStorage.setItem("token", response.data.token);
-        })
-        .catch(error => {
-          console.error("로그인 실패: ", error);
-          setErrorMessage("아이디 또는 비밀번호가 잘못되었습니다.");
-          setError(true);
-        })
-        ;
-    
-        console.log("로그인 성공:", response.data);
-
-        navigate("/");
-      } catch (error) {
-        console.error("로그인 실패:", error);
-        setErrorMessage("아이디 또는 비밀번호가 잘못되었습니다.");
-        setError(true);
-
-      }
+      setErrorMessage("아이디와 비밀번호를 입력하세요.");
+      return;
     }
+    const loginData = {
+      userUuid: userUuid,
+      userPassword: userPassword
+    };
 
-    console.log("아이디:", userUuid);
-    console.log("비밀번호:", userPassword);
+    try {
+      const response = await fetch("http://localhost:8080/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(loginData)
+      });
+
+      const data = await response.json();
+
+      if(response.ok) {
+
+        console.log("로그인 성공");
+        sessionStorage.setItem("token", data.jwt);
+        sessionStorage.setItem("userUuid", userUuid);
+
+        alert("로그인 성공");
+        navigate("/");
+      }else {
+        alert("로그인 실패! 아이디 또는 비밀번호를 확인하세요.");
+        console.error("Invalid credentials");
+      }
+          
+
+    } catch (error) {
+      alert("서버 오류 발생! 관리자에게 문의하세요.");
+      console.error("Error:", error);
+    }
   };
 
   const togglePasswordVisibility = () => {
@@ -93,7 +71,6 @@ const Login = () => {
   };
 
   return (
-
     <>
       <Nav></Nav>
       <div className="login-container">

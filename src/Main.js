@@ -1,36 +1,30 @@
-import React, { useEffect } from 'react'
-import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import Nav from './Nav';
-import axios from "axios";
-
 
 function Main() {
   const navigate = useNavigate();
 
+  const token = sessionStorage.getItem("token");
+  const uuid = sessionStorage.getItem("userUuid");
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    if(!token) {
+      alert("로그인이 필요합니다.");
+      navigate("/login")
+      console.log(uuid);
+    } 
 
-    axios.get("http://localhost:8080/", {
-      headers: {
-        Authorization: `Bearer ${token}`  // JWT 토큰을 헤더에 포함
-      }
-    })
-      .then(response => {
-        console.log("응답:", response.data);
-      })
-      .catch(error => {
-        console.error("인증 실패:", error);
-        navigate("/login");
-      });
-  })
+  }, [navigate]);
 
   return (
     <div>
       <Nav></Nav>
-      메인임
+      <h1>환영합니다!</h1>
+      {/* 인증된 사용자만 볼 수 있는 내용 */}
     </div>
-  )
+  );
 }
 
-export default Main
+export default Main;

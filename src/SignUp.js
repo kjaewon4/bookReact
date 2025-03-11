@@ -8,7 +8,7 @@ import Nav from "./Nav";
 
 const SignUp = () => {
     const [userUuid, setUserUuid] = useState("");
-    const [userNickname, setUserNickname] = useState(""); 
+    const [userNickname, setUserNickname] = useState("");
     const [userPassword, setUserPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
@@ -108,6 +108,9 @@ const SignUp = () => {
                         회원가입
                     </button>
                 </form>
+                <div className="signup-link">
+                    <p>아이디가 있으신가요? <Link to="/login">로그인</Link></p>
+                </div>
             </div>
         </>
     );
