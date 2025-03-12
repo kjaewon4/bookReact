@@ -4,6 +4,8 @@ import { Routes, Route } from 'react-router-dom'; // Router 관련 컴포넌트�
 import Login from './Login';
 import SignUp from './SignUp';
 import Main from './Main';
+import BookSearch from './BookSearch';
+import BookDetail from './BookDetail';
 
 const App = () => {
   return (
@@ -11,6 +13,10 @@ const App = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/" element={<Main />} />
+      <Route path="/booksearch" element={<BookSearch />} /> {/* BookSearch 페이지 */}
+      {/* 책 상세 페이지 경로: '/book/:bookIsbn' */}
+      <Route path="/book/:bookIsbn" element={<BookDetail />} />
+      {/* <Route path="/bookmark" element={<Bookmark />} /> 북마크 페이지 */}
     </Routes>
   );
 };

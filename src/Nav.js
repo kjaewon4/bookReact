@@ -1,10 +1,20 @@
 import { useState } from "react";
 import { Search, Bookmark, LogIn } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./main.css";
 
 export default function Nav() {
   const [search, setSearch] = useState("");
+  const navigate = useNavigate(); // navigate 훅 사용
+
+  // 검색창에서 Enter 키를 누를 때 실행되는 함수
+  const handleSearch = (e) => {
+    if (e.key === "Enter" && search.trim()) {
+      console.log(search);
+      // 검색어가 있으면 BookSearch 페이지로 검색어를 쿼리 파라미터로 넘김
+      navigate(`/booksearch?search=${search}`);
+    }
+  };
 
   return (
     <nav className="navbar">
@@ -18,6 +28,7 @@ export default function Nav() {
           placeholder="검색..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
+          onKeyDown={handleSearch} // Enter 키 눌렀을 때 처리
           className="search-input"
         />
         <Search className="search-icon" size={18} />

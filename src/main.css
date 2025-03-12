@@ -176,3 +176,7 @@
 .nav-link:hover {
   color: #007bff;
 }
+
+.detail-container {
+  padding-top: 1100px; /* Nav 높이에 맞춰 여백 추가 */
+}

@@ -18,6 +18,7 @@ function Main() {
 
   }, [navigate]);
 
+  
   return (
     <div>
       <Nav></Nav>
