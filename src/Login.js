@@ -46,19 +46,23 @@ const Login = () => {
 
       const data = await response.json();
 
-      if(response.ok) {
+      if (response.ok) {
 
-        console.log("로그인 성공");
-        sessionStorage.setItem("token", data.jwt);
+        console.log("로그인 성공 jwt: ", data.token);
+        sessionStorage.setItem("token", data.token);
         sessionStorage.setItem("userUuid", userUuid);
+
+        // 값 확인
+        console.log(sessionStorage.getItem("token"));
+        console.log(sessionStorage.getItem("userUuid"));
 
         alert("로그인 성공");
         navigate("/");
-      }else {
+      } else {
         alert("로그인 실패! 아이디 또는 비밀번호를 확인하세요.");
         console.error("Invalid credentials");
       }
-          
+
 
     } catch (error) {
       alert("서버 오류 발생! 관리자에게 문의하세요.");
