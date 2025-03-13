@@ -15,17 +15,17 @@ const BookSearch = () => {
     const searchParams = new URLSearchParams(location.search);
     const searchQuery = searchParams.get("search");
 
-    const token = sessionStorage.getItem("token");
-    const uuid = sessionStorage.getItem("userUuid");
+  const token = sessionStorage.getItem("jwt");
+  const uuid = sessionStorage.getItem("userUuid");
 
-    useEffect(() => {
-        if (!token) {
-            alert("로그인이 필요합니다.");
-            navigate("/login")
-            console.log(uuid);
-        }
+  useEffect(() => {
+    if(!token) {
+      alert("로그인이 필요합니다.");
+      navigate("/login")
+      console.log(uuid);
+    } 
 
-    }, [navigate]);
+  }, [navigate]);
 
     
     const handleBookmark = (isbn) => {
@@ -33,7 +33,7 @@ const BookSearch = () => {
         axios
             .post(
                 `http://localhost:8080/bookmarks/${isbn}`,
-                {},
+                { userUuid: uuid },
                 {
                     headers: {
                         Authorization: `Bearer ${token}`, // JWT 토큰 추가
@@ -44,8 +44,12 @@ const BookSearch = () => {
                 alert("북마크에 추가되었습니다.");
             })
             .catch((error) => {
-                console.error("북마크 추가 실패", error);
-                alert("북마크 추가에 실패했습니다.");
+                if (error.response && error.response.status === 409) {
+                    alert("이미 북마크된 책입니다.");
+                } else {
+                    console.error("북마크 추가 실패", error);
+                    alert("북마크 추가에 실패했습니다.");
+                }
             });
     };
 

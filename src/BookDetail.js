@@ -10,13 +10,16 @@ const BookDetail = () => {
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
-    const token = sessionStorage.getItem("token");
+    const token = sessionStorage.getItem("jwt");
+    const uuid = sessionStorage.getItem("userUuid");
 
     useEffect(() => {
         if (!token) {
             alert("로그인이 필요합니다.");
-            navigate("/login");
+            navigate("/login")
+            console.log(uuid);
         }
+
     }, [navigate]);
 
     useEffect(() => {
@@ -28,15 +31,15 @@ const BookDetail = () => {
                     'Authorization': `Bearer ${token}`, // 헤더에 JWT 토큰 추가
                 },
             })
-            .then((response) => {
-                setBookDetail(response.data); // 책 상세 정보 설정
-            })
-            .catch((error) => {
-                console.error("상세 정보 불러오기 실패", error);
-            })
-            .finally(() => {
-                setLoading(false);
-            });
+                .then((response) => {
+                    setBookDetail(response.data); // 책 상세 정보 설정
+                })
+                .catch((error) => {
+                    console.error("상세 정보 불러오기 실패", error);
+                })
+                .finally(() => {
+                    setLoading(false);
+                });
         }
     }, [bookIsbn, token]); // bookIsbn 변경 시마다 재요청
 
@@ -59,7 +62,7 @@ const BookDetail = () => {
                 <p>설명: {bookDetail.bookDescription}</p>
                 <p>ISBN: {bookDetail.bookIsbn}</p>
                 <img src={bookDetail.bookImg} alt={bookDetail.bookTitle} />
-                
+
                 <h4>서점 정보</h4>
                 {bookDetail.bookStores && bookDetail.bookStores.length > 0 ? (
                     <ul>

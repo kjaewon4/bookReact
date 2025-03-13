@@ -39,7 +39,7 @@ export default function Nav() {
 
       {/* 네비게이션 버튼 */}
       <div className="nav-links">
-        <Link to="/bookmark" className="nav-link">
+        <Link to="/bookmarks" className="nav-link">
           <Bookmark size={18} /> 북마크
         </Link>
         <Link to="/login" className="nav-link">

@@ -6,6 +6,7 @@ import SignUp from './SignUp';
 import Main from './Main';
 import BookSearch from './BookSearch';
 import BookDetail from './BookDetail';
+import BookmarkedBooks from "./BookmarkedBooks";  // 북마크 목록 페이지
 
 const App = () => {
   return (
@@ -16,8 +17,8 @@ const App = () => {
       <Route path="/booksearch" element={<BookSearch />} /> {/* BookSearch 페이지 */}
       {/* 책 상세 페이지 경로: '/book/:bookIsbn' */}
       <Route path="/book/:bookIsbn" element={<BookDetail />} />
-      {/* <Route path="/bookmark" element={<Bookmark />} /> 북마크 페이지 */}
-    </Routes>
+      <Route path="/bookmarks" element={<BookmarkedBooks />} />  {/* 북마크 목록 페이지 */}
+      </Routes>
   );
 };
 

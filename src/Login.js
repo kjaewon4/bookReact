@@ -41,7 +41,9 @@ const Login = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(loginData)
+        body: JSON.stringify(loginData),
+        credentials: "include"  // 쿠키를 포함시켜서 요청
+
       });
 
       const data = await response.json();
@@ -49,12 +51,9 @@ const Login = () => {
       if (response.ok) {
 
         console.log("로그인 성공 jwt: ", data.token);
-        sessionStorage.setItem("token", data.token);
-        sessionStorage.setItem("userUuid", userUuid);
+        sessionStorage.setItem("jwt", data.token );
+        sessionStorage.setItem("userUuid", data.userUuid );
 
-        // 값 확인
-        console.log(sessionStorage.getItem("token"));
-        console.log(sessionStorage.getItem("userUuid"));
 
         alert("로그인 성공");
         navigate("/");
