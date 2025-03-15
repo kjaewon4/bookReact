@@ -1,0 +1,182 @@
+/* 공통 스타일 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .input-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #555;
+  }
+  
+  input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+  }
+  
+  input:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  button {
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 12px;
+    width: 100%;
+  }
+  
+  /* 로그인 페이지 */
+  .login-container,
+  .signup-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .login-btn,
+  .signup-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+  }
+  
+  .login-btn:hover,
+  .signup-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* 회원가입 페이지에만 필요한 스타일 */
+  .error-message {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  /* 추가적인 스타일 - 아이콘과 비밀번호 표시/숨기기 */
+  .password-wrapper {
+    position: relative;
+  }
+  
+  .password-eye-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+  
+  /* 페이지 별 구분을 위한 클래스 */
+  .login-container h2 {
+    color: #333;
+  }
+  
+  .signup-container h2 {
+    color: #333;
+  }
+  
+  /* 네비게이션 바 스타일 */
+.navbar {
+  background-color: #fff;
+  padding: 15px 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+/* 로고 스타일 */
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+  color: #007bff;
+  text-decoration: none;
+}
+
+/* 검색창 스타일 */
+.search-container {
+  position: relative;
+}
+
+.search-input {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 200px;
+}
+
+.search-input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.search-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #555;
+}
+
+/* 타이틀 스타일 */
+.navbar-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* 네비게이션 링크 스타일 */
+.nav-links {
+  display: flex;
+  gap: 15px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.nav-link:hover {
+  color: #007bff;
+}
+
+.detail-container {
+  padding-top: 1100px; /* Nav 높이에 맞춰 여백 추가 */
+}
