@@ -21,8 +21,15 @@ public class SecurityConfig {
         // authorizeHttpRequests() : http 통신에 대한 인가정책을 설정
         http
                 .authorizeHttpRequests(auth -> auth.anyRequest().authenticated())
-                .httpBasic(basic -> basic.authenticationEntryPoint(new CustomAuthenticationEntryPoint()));
-
+                .formLogin(Customizer.withDefaults())
+                .rememberMe(rememberMe -> rememberMe
+                        .alwaysRemember(true)
+                        .tokenValiditySeconds(3600)
+                        .userDetailsService(userDetailsService())
+                        .rememberMeParameter("remember")
+                        .rememberMeCookieName("remember")
+                        .key("security")
+                );
 
         return http.build();
     }
