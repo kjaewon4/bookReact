@@ -1,0 +1,291 @@
+.book {
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ddd;
+    padding: 8px;
+    cursor: pointer;
+    width: 230px;
+    height: 268px;
+    background: white;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border-radius: 8px;
+    overflow: hidden;
+    min-height: 0px;
+    position: relative;
+}
+
+/* 호버 효과 */
+
+
+/* 📌 기본적으로 `.book-info` 숨기기 */
+.book-info {
+    display: none;
+}
+
+
+.book-image-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.book-image-wrapper img {
+    width: 100px;
+    height: auto;
+}
+
+/* 📌 이미지 + 제목을 묶는 `.book-content` */
+.book-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.book img {
+    width: 120px;
+    /* 🔥 기본 크기 줄이기 */
+    height: 190px;
+    border-radius: 6px;
+    padding-top: 20px;
+}
+
+/* 제목 크기 조정 */
+.book-title {
+    text-align: center;
+    width: 100%;
+    /* 부모(.book-content)의 가로폭을 기준으로 정렬됨 */
+    padding: 0 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+.book-description {
+    max-height: 140px;
+    overflow-y: auto;
+    padding-right: 8px;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+
+.book.expanded {
+
+        width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+        border: 1px solid #ddd;
+        border-radius: 12px;
+        background: white;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.05);
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .book.expanded .book-details {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 20px;
+        width: 100%;
+    }
+      .book.expanded .book-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; /* 중앙 -> 좌측 정렬 */
+        justify-content: flex-start;
+      }
+      
+    .book-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding-left: 10px;
+      }
+
+.book-details {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* 왼쪽: 이미지, 오른쪽: 책 정보 */
+    gap: 10px;
+    align-items: start;
+    transform: translateY(0px);
+
+}
+
+.book-description {
+    margin-left: 20px;
+}
+
+.book .bookmark-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    z-index: 10;
+    transition: transform 0.2s;
+
+}
+
+.book .bookmark-icon:hover {
+    transform: scale(1.2);
+}
+
+/* 더보기 버튼 */
+.more-button {
+    margin-top: 10px;
+    background-color: #eee;
+    border: none;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: background 0.2s;
+}
+
+.more-button:hover {
+    background-color: #ddd;
+}
+
+/* 팝업 오버레이 */
+.modal-overlay.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+/* 팝업 콘텐츠 */
+/* 팝업 콘텐츠 내부 전체 구성 */
+.modal-popup-content {
+    display: flex;
+    flex-direction: column;
+    max-width: 700px;
+    width: 90%;
+    background: white;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    position: relative;
+    word-break: break-word;
+}
+
+/* 닫기 버튼 */
+.modal-popup-close {
+    position: absolute;
+    top: 16px;
+    right: -290px;
+    font-size: 22px;
+    font-weight: bold;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #666;
+}
+
+.modal-popup-close:hover {
+    color: #ff4d4d;
+}
+
+/* 상단 이미지 + 정보 */
+.popup-book-content {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+/* 이미지 */
+.popup-book-image {
+    width: 160px;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* 이미지 오른쪽 텍스트 영역 */
+.popup-book-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 6px;
+}
+
+/* 설명은 하단에 따로 분리 */
+.popup-book-description {
+    margin-top: 24px;
+    font-size: 15px;
+    line-height: 1.5;
+    word-break: break-word;
+    white-space: pre-line;  /* ✅ 엔터 (\n) 있으면 줄바꿈 처리 */
+    max-height: 200px;       /* 고정 높이 */
+    overflow-y: auto;        /* 일정 길이 초과 시 y축 스크롤 */
+    padding-right: 8px;      /* 스크롤바와 겹치지 않도록 여백 */
+  }
+  
+
+/* 위치 정보 팝업 안의 카드 구조 */
+.location-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.location-card {
+    background-color: #f8f8f8;
+    padding: 10px 14px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    min-height: 70px;
+}
+
+.location-name {
+    font-weight: bold;
+    margin-bottom: 6px;
+    font-size: 14px;
+}
+
+.location-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: #0077cc;
+    text-decoration: underline;
+    font-size: 13px;
+}
+
+.location-link:hover {
+    color: #005fa3;
+}
+
+/* 📍 팝업 내 위치 정보 박스 */
+.popup-location-box {
+    margin-top: 24px;
+    font-size: 15px;
+    line-height: 1.5;
+    word-break: break-word;
+    white-space: pre-line;
+}
+
+  /* 📍 확장 모드 내 위치 정보 간격 조정 */
+.book-description .location-grid {
+    margin-top: 0;
+}

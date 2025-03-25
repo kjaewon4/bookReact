@@ -1,0 +1,312 @@
+/* 공통 스타일 */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+}
+
+
+h2 {
+    font-weight: normal;
+}
+
+/* 네비게이션 바 */
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    gap: 10px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.nav-item {
+    padding: 10px 15px;
+    cursor: pointer;
+    color: #333;
+    transition: color 0.3s;
+    font-size: 18px;
+}
+/* 
+.nav-item:hover {
+    color: #388e3c;
+} */
+
+/* 🔥 기본 링크 스타일 제거 */
+.nav-item a {
+    text-decoration: none;
+    /* 밑줄 제거 */
+    color: black;
+}
+
+/* 🔥 Hover(마우스 올렸을 때) 스타일 */
+.nav-item a:hover {
+    color: #b395d6;
+    /* 원하는 색상으로 변경 (예: 주황색) */
+}
+
+/* 🔥 선택된 링크 (활성화된 페이지) 스타일 */
+.nav-item a.active {
+    color: #b395d6;
+    /* 활성화된 상태일 때 색상 변경 */
+    text-decoration: underline;
+    /* 선택된 페이지 밑줄 */
+}
+
+/* h1 내부 Link 스타일 제거 */
+.header h1 a {
+    text-decoration: none;
+    /* 밑줄 제거 */
+    color: black;
+    /* 기본 텍스트 색상 */
+    font-weight: normal;
+    font-size: 32px;
+}
+
+/* 선택된 상태일 때 스타일 유지 */
+.header h1 a:visited {
+    color: black;
+    /* 방문한 링크 색상 변경 */
+}
+
+/* 마우스 올렸을 때 효과 */
+.header h1 a:hover {
+    color: #b395d6;
+    /* 원하는 색상으로 변경 (예: 오렌지색) */
+}
+
+/* 검색창 스타일 */
+.search-container {
+    display: flex;
+    /* 🔥 가로 정렬 */
+    align-items: center;
+    /* 🔥 수직 가운데 정렬 */
+    gap: 8px;
+    /* 🔥 input과 아이콘 간 간격 조정 */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 4px 8px;
+    /* 🔥 내부 여백 */
+    width: fit-content;
+    /* 🔥 내용에 맞게 크기 조절 */
+}
+
+/* 검색창 스타일 */
+.search-input {
+    border: none;
+    outline: none;
+    padding: 8px;
+    font-size: 13px;
+}
+
+/* 검색 아이콘 스타일 */
+.search-icon {
+    cursor: pointer;
+    color: #666;
+    /* 🔥 색상 조정 */
+}
+
+
+/* 개별 책 아이템 스타일 */
+.book-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.book {
+    display: flex;
+    flex-wrap: wrap;
+    /* 넘칠 경우 자동 줄바꿈 */
+    border: 2px solid #ddd;
+    border-radius: 12px;
+    padding: 24px;
+    margin: 15px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    max-width: 1200px;
+    width: 40%;
+    min-height: 400px;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+.book.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.book-image {
+    width: 200px;
+    padding: 50px;
+    height: auto;
+    border-radius: 8px;
+    margin-right: 20px;
+}
+
+.book-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+    min-width: 250px;
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow: hidden;
+}
+
+.book-author,
+.book-publisher,
+.book-description,
+.book-isbn {
+    font-size: 16px;
+    color: #333;
+    margin: 8px 0;
+    word-wrap: break-word;
+}
+
+/* 푸터 스타일 */
+footer {
+    background-color: white;
+    color: black;
+    text-align: center;
+    padding: 10px;
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* 로그인 회원가입 */
+
+.login-page-wrapper, .signup-page-wrapper {
+    display: flex;
+    justify-content: center; /* 수평 중앙 정렬 */
+    flex-direction: column;
+    align-items: center;     /* 수직 중앙 정렬 */
+    height: calc(100vh - 180.2px); /* 전체 화면 높이에서 헤더, footer 높이 뺌 */
+    background-color: #f9f9f9; /* 선택 사항: 배경 색 */
+  }
+
+  .login-title {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .input-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #555;
+  }
+  
+  .sign-input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+  }
+  
+  .sign-input:focus {
+    border-color: #b395d6;
+    outline: none;
+  }
+  
+  button {
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 12px;
+    width: 100%;
+  }
+  
+ 
+ /* 로그인 페이지 */
+ .login-container,
+ .signup-container {
+   background-color: #fff;
+   padding: 30px;
+   border-radius: 8px;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+   width: 100%;
+   max-width: 400px;
+ }
+ 
+ .login-btn,
+ .signup-btn {
+   background-color: #b395d6;
+   color: white;
+   border: none;
+ }
+ 
+ .login-btn:hover,
+ .signup-btn:hover {
+   background-color: #9f7fcb;
+ }
+ 
+ /* 회원가입 페이지에만 필요한 스타일 */
+ .error-message {
+   color: red;
+   font-size: 14px;
+   margin-bottom: 10px;
+ }
+ 
+ /* 추가적인 스타일 - 아이콘과 비밀번호 표시/숨기기 */
+ .password-wrapper {
+   position: relative;
+ }
+ 
+ .password-eye-icon {
+   position: absolute;
+   right: 10px;
+   top: 55%;
+   transform: translateY(-50%);
+   cursor: pointer;
+ }
+ 
+ /* 페이지 별 구분을 위한 클래스 */
+ .login-container h2 {
+   color: #333;
+ }
+ 
+ .signup-container h2 {
+   color: #333;
+ }
+ 
+ .sign-link {
+    padding-top: 10px;
+ }
+  

@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+.jua-regular {
+  font-family: "Jua", sans-serif;
+  font-weight: 1;
+  font-style: normal;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
+body {
+    font-family: "Jua", sans-serif;
+    font-weight: 1;
+    font-style: normal;
+}
+
+.content {
+  flex: 1;
+  max-width: 800px;
+  margin: auto;
+  padding: 16px;
+}
+
+/* NavLink 활성화된 상태 스타일 */
+.active-link {
+  color: #ff6347; /* 활성화된 링크 색상 (예시로 빨간색) */
+  text-decoration: underline; /* 활성 링크 밑줄 */
+}
+
+/* 기본 링크 색상 */
+.header-link, .nav-link {
+  color: black; /* 링크 기본 색상 (흰색으로 설정) */
+  text-decoration: none; /* 기본 링크 밑줄 제거 */
+}
+
+.header-link:hover, .nav-link:hover {
+  color: #ff6347; /* Hover 시 링크 색상 변경 (예시로 빨간색) */
+}
+
+/* 링크가 활성화되었을 때의 스타일 */
+.nav-item .active-link {
+  color: #ff6347;
+}
+
+/* 📌 반응형 적용 */
+@media (max-width: 1024px) {
+  .app {
+      width: 95%;
+  }
+}
+
+@media (max-width: 800px) {
+  .app {
+      width: 95%;
+  }
+}
+
+/* 📌 콘텐츠 기본 스타일 */
+.content {
+  flex: 1;
+  max-width: 1200px;
+  margin: auto;
+  padding: 16px;
+}
+
+/* 📌 NavLink 스타일 */
+.active-link {
+  color: #ff6347;
+  text-decoration: underline;
+}
+
+.header-link, .nav-link {
+  color: black;
+  text-decoration: none;
+}
+
+.header-link:hover, .nav-link:hover {
+  color: #ff6347;
+}
+
+/* 📌 반응형 네비게이션 조정 */
+@media (max-width: 768px) {
+  .header {
+      flex-direction: column;
+      align-items: center;
+      width: 80%;
+  }
+}
+
+/* 📌 반응형 배너 */
+@media (max-width: 768px) {
+  .banner {
+      height: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .banner {
+      height: 120px;
+      font-size: 14px;
+  }
+}

@@ -1,0 +1,104 @@
+.book-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* 📌 그리드 설정 */
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 기본 4개씩 배치 */
+    gap: 15px;
+    width: 100%;
+    justify-content: center;
+    grid-auto-flow: dense; /* 📌 자동으로 빈 공간 채우기 */
+}
+
+.book {
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ddd;
+    padding: 8px;
+    cursor: pointer;
+    width: 100%;
+    max-width: 230px;
+    background: white;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border-radius: 8px;
+    overflow: hidden;
+    /* 🔥 강제 표시 */
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* 📌 클릭 시 2x2 크기로 정사각형 확장 */
+.book.expanded {
+    grid-column: span 2; /* 가로 2칸 */
+    grid-row: span 2; /* 세로 2칸 */
+    width: 100%;
+    height: 100%;
+    min-width: 520px; /* 🔥 확장된 크기 */
+    max-height: 563px;
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+
+}
+
+/* 📌 1번째 책 클릭 시 (1, 2, 4, 5 자리 차지) */
+.book.expanded:nth-child(1) {
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 2;
+}
+
+/* 📌 2번째 & 3번째 책 클릭 시 (2, 3, 6, 7 자리 차지) */
+.book.expanded:nth-child(2),
+.book.expanded:nth-child(3) {
+    grid-column: 2 / span 2;
+    grid-row: 1 / span 2;
+}
+
+/* 📌 4번째 책 클릭 시 (3, 4, 7, 8 자리 차지) */
+.book.expanded:nth-child(4) {
+    grid-column: 3 / span 2;
+    grid-row: 1 / span 2;
+}
+
+
+
+.book.expanded img {
+    width: 200px; /* 🔥 기존보다 40% 증가 */
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 20px 0;
+    gap: 8px;
+  }
+  
+  .pagination li {
+    cursor: pointer;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .pagination li.active {
+    background-color: #b395d6;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .pagination li:hover {
+    background-color: #eee;
+  }
+  
